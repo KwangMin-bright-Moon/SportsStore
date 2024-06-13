@@ -16,6 +16,7 @@ func AddScoped(factoryFunc interface{}) (err error) {
 
 func AddSingleton(factoryFunc interface{}) (err error) {
 	factoryFuncVal := reflect.ValueOf(factoryFunc)
+
 	if factoryFuncVal.Kind() == reflect.Func && factoryFuncVal.Type().NumOut() == 1 {
 		var results []reflect.Value
 		once := sync.Once{}
